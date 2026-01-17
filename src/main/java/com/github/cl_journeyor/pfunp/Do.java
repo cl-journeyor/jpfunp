@@ -12,7 +12,6 @@ public final class Do {
 
     }
 
-    // Test if it works
     public static <T> Stream<T> repeat(T item) {
         return Stream.iterate(item, Func::identity);
     }
