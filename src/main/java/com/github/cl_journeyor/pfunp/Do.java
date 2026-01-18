@@ -22,7 +22,21 @@ public final class Do {
         return supplier.get();
     }
 
+    public static <T, X extends Throwable> T scopeX(SupplierX<T, X> supplier) throws X {
+        Objects.requireNonNull(supplier);
+
+        return supplier.get();
+    }
+
     public static <T> T to(T mutable, Consumer<T> mutator) {
+        Objects.requireNonNull(mutator);
+
+        mutator.accept(mutable);
+
+        return mutable;
+    }
+
+    public static <T, X extends Throwable> T toX(T mutable, ConsumerX<T, X> mutator) throws X {
         Objects.requireNonNull(mutator);
 
         mutator.accept(mutable);
